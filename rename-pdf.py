@@ -29,5 +29,10 @@ for key in file_name_dict:
             else:
                 path = os.path.join(DATA_DIRECTORY, str(key) + "_" + str(value))
                 os.remove(path)
-
-print file_name_dict
+        
+        # Now rename the extra files to the original name
+        for value in file_name_dict[key]:
+            if len(value) > 1:
+                path = os.path.join(DATA_DIRECTORY, str(key) + "_" + str(value))
+                out_path = os.path.join(DATA_DIRECTORY, str(key))
+                os.rename(path, out_path)
